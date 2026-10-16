@@ -1,0 +1,6 @@
+# Copy to .pre-commit-config.yaml in a project, then run `pre-commit install`.
+repos:
+  - repo: https://github.com/somaasahi/secret-guard
+    rev: v0.1.0
+    hooks:
+      - id: secret-guard

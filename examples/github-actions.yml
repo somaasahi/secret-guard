@@ -1,0 +1,17 @@
+# Server-side backstop: a local pre-commit hook can be skipped with
+# `git commit --no-verify`, so the same scan runs again on every pull request.
+name: secret-scan
+on: pull_request
+
+jobs:
+  secret-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install git+https://github.com/somaasahi/secret-guard
+      - run: secret-guard scan --since origin/${{ github.base_ref }}

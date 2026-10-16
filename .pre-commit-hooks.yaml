@@ -1,0 +1,7 @@
+- id: secret-guard
+  name: secret-guard
+  description: Block API keys and other secrets before they are committed.
+  entry: secret-guard scan
+  language: python
+  pass_filenames: false
+  always_run: true
